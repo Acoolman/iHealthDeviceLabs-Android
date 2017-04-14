@@ -1,10 +1,21 @@
+#Attentation：
+
+		Before you use SDK, please get permission from iHealth team, otherwise you will not be able to use SDK (connect failed)      
+
+		Contact for more information:    
+		a. <developer@ihealthlabs.com>(US)  
+		b. <louie@ihealthlabs.com>(Europe)  
+		c. <huhaiyun@ihealthlabs.com.cn>(Other)  
+	
+		After received a invitation, you will be able to register your application for iOS and Android platform.  
+
+</br>    
+         
 # iHealth Device Developer Documentation
 
 
 This document describes how to use the iHealth Device SDK to accomplish the major operation: Connection Device, Online Measurement, Offline Measurement and iHealth Device Management. 
- 
-
-    
+  
 ### Latest version
 
 2.3.2
