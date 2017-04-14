@@ -30,6 +30,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ihealth.communication.control.HsProfile;
 import com.ihealth.communication.manager.iHealthDevicesCallback;
 import com.ihealth.communication.manager.iHealthDevicesManager;
 
@@ -138,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             msg.what = HANDLER_SCAN;
             msg.setData(bundle);
             myHandler.sendMessage(msg);
+            if (manufactorData != null) {
+                Log.d(TAG, "onScanDevice mac suffix = " + manufactorData.get(HsProfile.SCALE_WIFI_MAC_SUFFIX));
+            }
+
         }
 
         @Override
@@ -515,7 +520,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent.setClass(MainActivity.this, BP5.class);
                     startActivity(intent);
 
-                } else if (iHealthDevicesManager.TYPE_BP7S.equals(type)) {
+                } else if (iHealthDevicesManager.TYPE_BP5S.equals(type)) {
+                    intent.setClass(MainActivity.this, BP5S.class);
+                    startActivity(intent);
+
+                }else if (iHealthDevicesManager.TYPE_BP7S.equals(type)) {
                     intent.setClass(MainActivity.this, BP7S.class);
                     startActivity(intent);
 

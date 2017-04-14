@@ -190,6 +190,7 @@ public class BG1 extends AppCompatActivity {
                 Log.e(TAG, "---------------------msgStripOut------------------------------");
                 mTextView.append(SDF.format(new Date()) + "Strip Out\n");
             } else if (action.equals(Bg1Profile.ACTION_BG1_MEASURE_STANDBY)) {
+                mBg1Control.disconnect();
 
                 if (!isGetResultBg1) {
                     isGetResultBg1 = true;

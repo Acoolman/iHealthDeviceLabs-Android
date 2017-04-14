@@ -119,6 +119,20 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:text="disconnect" />
     </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/btn_analyse_code_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="analyseCodeInfo" />
+        <Button
+            android:id="@+id/btn_set_bottleid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setBottleId" />
+    </TableRow>
 </TableLayout>
 
 <TextView

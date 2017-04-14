@@ -49,7 +49,7 @@ public class HS6 extends Activity implements OnClickListener {
      * identification of the SDK, will be issued after the iHealth SDK registration. please contact
      * louie@ihealthlabs.com for registration.
      */
-    String userName = "anudroid.apk06@gmail.com";
+    String userName = "315726048@163.com";
     String clientId = "708bde5b65884f8d9e579e33e66e8e80";
     String clientSecret = "38ff62374a0d4aacadaf0e4fb4ed1931";
     String clientPara = "random_str";

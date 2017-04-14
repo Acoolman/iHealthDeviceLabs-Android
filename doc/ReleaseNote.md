@@ -183,3 +183,19 @@ Description:
 Release Date: 2017-1-21
 ```
 
+
+### 16. V2.3.3
+```
+Description: 
+	1. Update the version format for firmware and hardware (eg. 1.0.3)
+	2. Permission verification trial period is modified to 10 days, 10 days any validation error is available, the original only allows no network available
+	3. GDH Code updated to V1.1
+	4. Support for new iHealth devices: BP5S BG5L
+	5. Optimize the Bluetooth scan, connection efficiency; optimize BG1 connectivity
+	6. Increase the download progress function for product firmware upgrade
+	7. Support upgrade product firmware offline
+	8. Fix bugs
+				
+			
+Release Date: 2017-4-14
+```

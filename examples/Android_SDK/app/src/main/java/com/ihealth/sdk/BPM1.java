@@ -84,7 +84,7 @@ public class BPM1 extends AppCompatActivity implements iHealthDeviceBPM1Callback
         btnConnectDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mBpm1Control.connectDevice("iHealth-BPM1", 10000);
+                mBpm1Control.connectDevice("iHealth-BPM1", 15000);
             }
         });
 
@@ -160,7 +160,7 @@ public class BPM1 extends AppCompatActivity implements iHealthDeviceBPM1Callback
                     JSONObject object = new JSONObject(message);
                     int state = object.getInt(BpProfile.STATE_NUMBER_BPM1);
                     if (state == 5) {
-                        mBpm1Control.connectConfiguration("TP_LINK_3019");
+                        mBpm1Control.connectConfiguration("TP-LINK_TTTTTTTT");
                     }
                     msg.obj = message;
                     handler.sendMessage(msg);

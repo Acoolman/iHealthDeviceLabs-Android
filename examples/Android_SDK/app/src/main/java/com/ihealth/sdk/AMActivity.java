@@ -223,12 +223,12 @@ public class AMActivity extends AppCompatActivity implements View.OnClickListene
                 executeMethod("checkSwimPara", null);
                 break;
             case R.id.btn_SetSwimPara:
-                executeMethod("setSwimPara", new Class[]{boolean.class,  int.class, int.class, int.class, int.class},
+                executeMethod("setSwimPara", new Class[]{boolean.class, int.class, int.class, int.class, int.class},
                         AmProfile.AM_SWITCH_OPEN, 25, 0, 10, AmProfile.AM_SET_UNIT_IMPERIAL_STANDARD);
                 break;
             case R.id.btn_SetRemind:
-                executeMethod("setActivityRemind", new Class[] {int.class, int.class, boolean.class},
-                        0 , 20, true);
+                executeMethod("setActivityRemind", new Class[]{int.class, int.class, boolean.class},
+                        0, 20, true);
                 break;
             case R.id.btn_GetRemind:
                 executeMethod("getActivityRemind", null);
@@ -238,7 +238,7 @@ public class AMActivity extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.btn_GetClock:
                 executeMethod("getAlarmClockDetail", new Class[]{int[].class},
-                        new int[] {3, 3, 1, 1, 2, 1});
+                        new int[]{3, 3, 1, 1, 2, 1});
                 break;
             case R.id.btn_DeleteClock:
                 executeMethod("deleteAlarmClock", new Class[]{int.class}, 1);
@@ -314,7 +314,8 @@ public class AMActivity extends AppCompatActivity implements View.OnClickListene
 
     private void popSetUserInformationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final View contentView = View.inflate(this, R.layout.dialog_am4_userinfo, null);;
+        final View contentView = View.inflate(this, R.layout.dialog_am4_userinfo, null);
+        ;
         builder.setView(contentView);
         builder.setPositiveButton("Set", new DialogInterface.OnClickListener() {
             @Override
@@ -361,9 +362,10 @@ public class AMActivity extends AppCompatActivity implements View.OnClickListene
 
     /**
      * Call specified method with reflection.
-     * @param name Method's name
+     *
+     * @param name           Method's name
      * @param parametersForm Form of parameters, should be null or Class array
-     * @param parameters parameters, should be empty or Object array
+     * @param parameters     parameters, should be empty or Object array
      */
     private void executeMethod(String name, Class[] parametersForm, Object... parameters) {
         if (TextUtils.isEmpty(name)) {

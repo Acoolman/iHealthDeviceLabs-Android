@@ -37,7 +37,7 @@ public class BG5l extends AppCompatActivity implements View.OnClickListener {
     private int clientCallbackId;
     private TextView tv_return;
     public String QRCode = "02323C641E3114322D0800A064646464646464646464FA012261000E1CCC";
-
+    private long bottleId = 0;
     private Timer mTimer;
     private TimerTask mTimerTask;
 
@@ -71,6 +71,8 @@ public class BG5l extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.btn_startMeasure).setOnClickListener(this);
         findViewById(R.id.btn_holdLink).setOnClickListener(this);
         findViewById(R.id.btn_disconnect).setOnClickListener(this);
+        findViewById(R.id.btn_analyse_code_info).setOnClickListener(this);
+        findViewById(R.id.btn_set_bottleid).setOnClickListener(this);
 
         tv_return = (TextView) findViewById(R.id.tv_msgReturn);
 
@@ -179,6 +181,21 @@ public class BG5l extends AppCompatActivity implements View.OnClickListener {
                 } else
                     Toast.makeText(BG5l.this, "bg5Control == null", Toast.LENGTH_LONG).show();
 
+                break;
+            case R.id.btn_analyse_code_info:
+                String bottleInfo = Bg5lControl.getBottleInfoFromQR(QRCode);
+                try {
+                    bottleId =((JSONObject) new JSONObject(bottleInfo).getJSONArray("bottleInfo").get(0)).getLong("bottleId");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                tv_return.setText(Bg5lControl.getBottleInfoFromQR(QRCode));
+                break;
+            case R.id.btn_set_bottleid:
+                if (bg5lControl != null) {
+                    bg5lControl.setBottleId(bottleId);
+                } else
+                    Toast.makeText(BG5l.this, "bg5lControl == null", Toast.LENGTH_LONG).show();
                 break;
         }
 

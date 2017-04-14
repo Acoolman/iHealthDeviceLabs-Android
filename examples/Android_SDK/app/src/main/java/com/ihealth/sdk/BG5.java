@@ -15,8 +15,12 @@ import android.widget.Toast;
 
 import com.ihealth.communication.control.Bg5Control;
 import com.ihealth.communication.control.Bg5Profile;
+import com.ihealth.communication.control.Bg5lControl;
 import com.ihealth.communication.manager.iHealthDevicesCallback;
 import com.ihealth.communication.manager.iHealthDevicesManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,7 +33,7 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
     private int clientCallbackId;
     private TextView tv_return;
     public String QRCode = "02323C641E3114322D0800A064646464646464646464FA012261000E1CCC";
-
+    private long bottleId = 0;
     private Timer mTimer;
     private TimerTask mTimerTask;
 
@@ -63,6 +67,8 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.btn_startMeasure).setOnClickListener(this);
         findViewById(R.id.btn_holdLink).setOnClickListener(this);
         findViewById(R.id.btn_disconnect).setOnClickListener(this);
+        findViewById(R.id.btn_analyse_code_info).setOnClickListener(this);
+        findViewById(R.id.btn_set_bottleid).setOnClickListener(this);
 
         tv_return = (TextView) findViewById(R.id.tv_msgReturn);
 
@@ -137,14 +143,14 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
                 if (bg5Control != null) {
                     String QRInfo = bg5Control.getBottleInfoFromQR(QRCode);
                     Log.i(TAG, "QRinfo =" + QRInfo);
-                    bg5Control.setBottleMessageWithInfo(1, 1, QRCode, 20, "2017-02-14");
+                    bg5Control.setBottleMessageWithInfo(1, 1, QRCode, 20, "2017-07-14");
                 } else
                     Toast.makeText(BG5.this, "bg5Control == null", Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.btn_setBottleMessage:
                 if (bg5Control != null) {
-                    bg5Control.setBottleMessageWithInfo(2, 1, "", 20, "2017-02-14");
+                    bg5Control.setBottleMessageWithInfo(2, 1, "", 20, "2017-07-14");
                 } else
                     Toast.makeText(BG5.this, "bg5Control == null", Toast.LENGTH_LONG).show();
 
@@ -171,6 +177,21 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
                 } else
                     Toast.makeText(BG5.this, "bg5Control == null", Toast.LENGTH_LONG).show();
 
+                break;
+            case R.id.btn_analyse_code_info:
+                String bottleInfo = Bg5Control.getBottleInfoFromQR(QRCode);
+                try {
+                    bottleId =((JSONObject) new JSONObject(bottleInfo).getJSONArray("bottleInfo").get(0)).getLong("bottleId");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                tv_return.setText(Bg5lControl.getBottleInfoFromQR(QRCode));
+                break;
+            case R.id.btn_set_bottleid:
+                if (bg5Control != null) {
+                    bg5Control.setBottleId(bottleId);
+                } else
+                    Toast.makeText(BG5.this, "bg5Control == null", Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -215,7 +236,6 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
                 case Bg5Profile.ACTION_SET_TIME:
                 case Bg5Profile.ACTION_SET_UNIT:
                 case Bg5Profile.ACTION_ERROR_BG:
-                case Bg5Profile.ACTION_GET_BOTTLEID:
                 case Bg5Profile.ACTION_GET_CODEINFO:
                 case Bg5Profile.ACTION_HISTORICAL_DATA_BG:
                 case Bg5Profile.ACTION_DELETE_HISTORICAL_DATA:
@@ -233,6 +253,17 @@ public class BG5 extends AppCompatActivity implements View.OnClickListener {
                     break;
                 case Bg5Profile.ACTION_STRIP_OUT:
                     msg.obj = "strip out";
+                    break;
+                case Bg5Profile.ACTION_GET_BOTTLEID:
+                    msg.obj = message;
+                    try {
+                        bottleId = new JSONObject(message).getLong(Bg5Profile.GET_BOTTLEID);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case Bg5Profile.ACTION_SET_BOTTLE_ID_SUCCESS:
+                    msg.obj = "set bottleId success";
                     break;
             }
             myHandler.sendMessage(msg);

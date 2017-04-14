@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -127,7 +128,11 @@
         <activity
             android:name=".PressureTestActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BPM1"></activity>
+        <activity android:name=".BPM1" />
+        <activity
+            android:name=".BP5S"
+            android:label="@string/title_activity_bp5s"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
