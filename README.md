@@ -1,4 +1,4 @@
-# Attentation：
+# Attention：
 
 		Before you use SDK, please get permission from iHealth team, otherwise you will not be able to use SDK (connect failed)      
 
