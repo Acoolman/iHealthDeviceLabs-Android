@@ -60,3 +60,19 @@
 
 [Location Permission](https://github.com/iHealthDeviceLabs/iHealthDeviceLabs-Android/blob/master/public/Location_Permission.png?raw=true)  
 [Location Function](https://github.com/iHealthDeviceLabs/iHealthDeviceLabs-Android/blob/master/public/LocationFunction.jpg?raw=true)
+
+
+###4. Android 7.0 connect problem   
+
+```
+Connect will fail on Android 7.0 with devices as follows:
+1. HS4  Firmware Version < 1.0.5
+2. PO3  (Firmware Version < 1.0.5   ||  (Firmware Version = 1.0.5  && Display Version != 11.0.5))
+3. PO3M Firmware Version < 2.1.4
+4. BP3L  （Firmware Version =1.0.0 && BT Version < 1.2.4）
+5. KN-550BT  (Firmware Version =1.0.0 && BT Version < 1.2.4）
+6. AM3   All the version
+7. AM3S   Firmware Version < 1.1.8
+8. AM4   Firmware Version < 1.4.4
+  
+```
