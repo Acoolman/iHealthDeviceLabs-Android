@@ -29,7 +29,7 @@
    ```
 
 
-###2. User status    
+### 2. User status    
 
 ```
 1.New-user registration succeeded.
@@ -45,7 +45,7 @@
 
 ```
 
-###3. Android 6.0 location permission
+### 3. Android 6.0 location permission
 
 ```
 	If targetSdkVersion >= 23, need location permission as follows:
@@ -62,7 +62,7 @@
 [Location Function](https://github.com/iHealthDeviceLabs/iHealthDeviceLabs-Android/blob/master/public/LocationFunction.jpg?raw=true)
 
 
-###4. Android 7.0 connect problem   
+### 4. Android 7.0 connect problem   
 
 ```
 Connect will fail on Android 7.0 with devices as follows:
